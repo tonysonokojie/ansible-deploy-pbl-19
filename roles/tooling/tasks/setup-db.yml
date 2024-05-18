@@ -5,9 +5,9 @@
     
 - name: create database
   community.mysql.mysql_db:
-    login_host: "terraform-2021111611530321750000000c.cdqpbjkethv0.us-east-1.rds.amazonaws.com"
-    login_user: "david"
-    login_password: "devopspblproject"
+    login_host: "terraform-20240518012440209900000012.chy648q6g6nn.us-east-1.rds.amazonaws.com"
+    login_user: "admin"
+    login_password: "admin12345"
     name: toolingdb
     collation: utf8_general_ci
     encoding: utf8
@@ -17,11 +17,11 @@
   ansible.builtin.replace:
     path: /var/www/html/functions.php
     regexp: "{{ item.regexp }}"
-    replace: "{{ item.line }}"
+    replace: "{{ item.replace }}"
   loop:
-    - { regexp: '^mysql.tooling.svc.cluster.local', line: "terraform-2021111611530321750000000c.cdqpbjkethv0.us-east-1.rds.amazonaws.com" }
-    - { regexp: '^admin', line: "david" }
-    - { regexp: '^tooling', line: "toolingdb" }
-    - { regexp: '^admin', line: "devopspblproject" }
+    - { regexp: '^mysql.tooling.svc.cluster.local', replace: "terraform-20240518012440209900000012.chy648q6g6nn.us-east-1.rds.amazonaws.com" }
+    - { regexp: '^admin', replace: "admin" }
+    - { regexp: '^tooling', replace: "toolingdb" }
+    - { regexp: '^admin', replace: "admin12345" }
 
 
